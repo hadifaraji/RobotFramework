@@ -1,0 +1,9 @@
+pip install --upgrade pip
+
+pip install robotframework
+
+robot --version
+
+pip list
+
+pip install --upgrade robotframework
