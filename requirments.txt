@@ -7,3 +7,6 @@ robot --version
 pip list
 
 pip install --upgrade robotframework
+
+activate virtualenv :
+.\.venv\Scripts\activate
