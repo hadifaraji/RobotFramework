@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.2 on win32)" generated="2024-07-14T08:55:55.600079" rpa="false" schemaversion="5">
+<suite id="s1" name="RobotFramework" source="C:\Users\h.faraji\Desktop\picture\RobotFramework">
+<suite id="s1-s1" name="Tests" source="C:\Users\h.faraji\Desktop\picture\RobotFramework\Tests">
+<suite id="s1-s1-s1" name="Main" source="C:\Users\h.faraji\Desktop\picture\RobotFramework\Tests\main.robot">
+<test id="s1-s1-s1-t1" name="TEST" line="10">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-07-14T08:55:55.644003" level="INFO">this is a sample testcase</msg>
+<arg>this is a sample testcase</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-07-14T08:55:55.644003" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-07-14T08:55:55.642353" elapsed="0.001650"/>
+</test>
+<doc>this is my first testcase</doc>
+<status status="PASS" start="2024-07-14T08:55:55.632575" elapsed="0.011428"/>
+</suite>
+<status status="PASS" start="2024-07-14T08:55:55.630808" elapsed="0.019450"/>
+</suite>
+<status status="PASS" start="2024-07-14T08:55:55.600079" elapsed="0.051179"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="RobotFramework">RobotFramework</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">RobotFramework.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Main">RobotFramework.Tests.Main</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

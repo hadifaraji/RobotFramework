@@ -10,3 +10,6 @@ pip install --upgrade robotframework
 
 activate virtualenv :
 .\.venv\Scripts\activate
+
+script for run :
+robot Tests/main.robot
