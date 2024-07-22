@@ -8,8 +8,14 @@ pip list
 
 pip install --upgrade robotframework
 
+created venv :
+python -m venv .venv
+
 activate virtualenv :
 .\.venv\Scripts\activate
+
+deactivate virtualenv :
+deactivate
 
 script for run :
 robot Tests/main.robot
@@ -35,3 +41,6 @@ robot   --loglevel  TRACE  Tests/main.robot
 گذاشتن فایل خروجی در پوشه Output
 robot  -d Output --loglevel  TRACE  Tests/main.robot
 
+
+pip install robotframework -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install pip install robotframework-seleniumlibrary -i https://pypi.tuna.tsinghua.edu.cn/simple
