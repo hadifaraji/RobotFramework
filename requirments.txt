@@ -13,3 +13,25 @@ activate virtualenv :
 
 script for run :
 robot Tests/main.robot
+
+run random testcase :
+robot --randomize ALL Tests
+
+با استفاده از tag فقط مواردی که دوس داریم میتونیم اجرا کنیم 
+*** Test Cases ***
+TEST
+    [Tags]    demo
+    log  this is a sample testcase
+
+robot --randomize ALL -i demo Tests 
+
+
+logs :
+robot   --loglevel  INFO  Tests/main.robot  
+robot   --loglevel  DEBUG  Tests/main.robot
+robot   --loglevel  TRACE  Tests/main.robot
+
+
+گذاشتن فایل خروجی در پوشه Output
+robot  -d Output --loglevel  TRACE  Tests/main.robot
+
