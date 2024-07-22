@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0.1 (Python 3.12.2 on win32)" generated="2024-07-14T08:55:55.600079" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0.1 (Python 3.12.2 on win32)" generated="2024-07-14T16:24:53.159765" rpa="false" schemaversion="5">
 <suite id="s1" name="RobotFramework" source="C:\Users\h.faraji\Desktop\picture\RobotFramework">
 <suite id="s1-s1" name="Tests" source="C:\Users\h.faraji\Desktop\picture\RobotFramework\Tests">
 <suite id="s1-s1-s1" name="Main" source="C:\Users\h.faraji\Desktop\picture\RobotFramework\Tests\main.robot">
 <test id="s1-s1-s1-t1" name="TEST" line="10">
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-07-14T08:55:55.644003" level="INFO">this is a sample testcase</msg>
+<msg time="2024-07-14T16:24:53.230519" level="INFO">this is a sample testcase</msg>
 <arg>this is a sample testcase</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-07-14T08:55:55.644003" elapsed="0.000000"/>
+<status status="PASS" start="2024-07-14T16:24:53.230519" elapsed="0.000889"/>
 </kw>
-<status status="PASS" start="2024-07-14T08:55:55.642353" elapsed="0.001650"/>
+<status status="PASS" start="2024-07-14T16:24:53.218118" elapsed="0.013709"/>
 </test>
 <doc>this is my first testcase</doc>
-<status status="PASS" start="2024-07-14T08:55:55.632575" elapsed="0.011428"/>
+<status status="PASS" start="2024-07-14T16:24:53.217106" elapsed="0.015726"/>
 </suite>
-<status status="PASS" start="2024-07-14T08:55:55.630808" elapsed="0.019450"/>
+<status status="PASS" start="2024-07-14T16:24:53.204383" elapsed="0.030446"/>
 </suite>
-<status status="PASS" start="2024-07-14T08:55:55.600079" elapsed="0.051179"/>
+<status status="PASS" start="2024-07-14T16:24:53.171891" elapsed="0.065299"/>
 </suite>
 <statistics>
 <total>

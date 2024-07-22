@@ -1,6 +1,5 @@
 *** Settings ***
 Documentation  this is my first testcase
-Library  OperatingSystem
 
 *** Keywords ***
 
@@ -8,8 +7,5 @@ Library  OperatingSystem
 
 *** Test Cases ***
 TEST
+    [Tags]    demo
     log  this is a sample testcase
-
-
-
-
