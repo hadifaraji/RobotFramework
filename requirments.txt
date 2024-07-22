@@ -1,6 +1,9 @@
 pip install --upgrade pip
 
 pip install robotframework
+another way for install robotframework :
+pip install robotframework -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install pip install robotframework-seleniumlibrary -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 robot --version
 
@@ -42,5 +45,3 @@ robot   --loglevel  TRACE  Tests/main.robot
 robot  -d Output --loglevel  TRACE  Tests/main.robot
 
 
-pip install robotframework -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install pip install robotframework-seleniumlibrary -i https://pypi.tuna.tsinghua.edu.cn/simple
