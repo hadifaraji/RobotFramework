@@ -44,6 +44,8 @@ robot   --loglevel  TRACE  Tests/main.robot
 گذاشتن فایل خروجی در پوشه Output
 robot  -d Output --loglevel  TRACE  Tests/main.robot
 
+git add .
+git commit -m 'test'
 git push --force origin main
 ---------------------------------
 attrs==23.2.0
