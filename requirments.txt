@@ -72,3 +72,15 @@ wsproto==1.2.0
 
 practice robotframework :
 https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html#Input%20Text
+
+
+extentions :
+GitHub Codespaces
+Pylance
+Python
+Python Debugger
+Robot Framework Helper
+Robot Framework Intellisense
+Robot Framework Language Server
+Robot Snippets
+RobotCode - Robot Framework Support
