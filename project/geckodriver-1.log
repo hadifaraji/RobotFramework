@@ -1,0 +1,19 @@
+1720605825270	geckodriver	INFO	Listening on 127.0.0.1:57120
+1720605828453	mozrunner::runner	INFO	Running command: "C:\\Users\\a.sazegar\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-notifications ... remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\A8813~1.SAZ\\AppData\\Local\\Temp\\rust_mozprofileY5EZYU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1720605828805	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-disable-notifications"
+1720605828927	Marionette	INFO	Listening on port 57139
+WebDriver BiDi listening on ws://127.0.0.1:57121
+Read port: 57139
+1720605829087	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57121/devtools/browser/03d5eb2f-c57b-4254-85b3-d14ecfde09ef
+1720605834044	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
