@@ -9,6 +9,8 @@ ${internationalHotel_Tab}     css:[data-test='service-tab-international-hotel'] 
 ${domesticHotel_Tab}          css:[data-test='service-tab-domestic-hotel'] > .tabs_text__7p1gI
 ${internationalFlight_Tab}    //li[.='پرواز خارجی']
 ${domesticFlight_Tab}         css:[data-test='service-tab-domestic-flight'] > .tabs_text__7p1gI
+${More_Tab}                //span[.='بیشتر']
+${Visa_Tab}        css:[data-test='visa']
 *** Keywords ***
 Wait Until Element Is Clickable
     [Arguments]    ${locator}
@@ -48,3 +50,14 @@ Click on profile
     Click Element    css:.nav_username__7OxpS
     Wait Until Element Is Visible    //div[.='پروفایل']
     Click Element    //div[.='پروفایل']
+
+Click on Cip button 
+    Sleep    2
+    Wait Until Element Is Visible    //ul[@class='no-scrollbar tabs_tabs__bXQKN justify-content-center']//div[.='تشریفات']
+    Click Element    //ul[@class='no-scrollbar tabs_tabs__bXQKN justify-content-center']//div[.='تشریفات']
+Click orders
+    Wait Until Element Is Visible    css:.icon-profile-fill   timeout=5s
+    Click Element    css:.icon-profile-fill
+    Wait Until Element Is Visible      css:[data-test='orders']
+    Click Element      css:[data-test='orders']
+

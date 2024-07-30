@@ -13,18 +13,33 @@ ${BROWSER}           Chrome
 Open Login Page Using Chrome Browser Dev Train
   Open Browser     ${UrlDevTrain}    Chrome     
   Maximize Browser Window
+Open Login Page Using Chrome Browser Stage
+ #   Open Browser  ${UrlApp}    ${BROWSER}
+   ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    --disable-notifications
+    Call Method    ${chrome_options}    add_argument    --disable-cache
+    Open Browser   ${UrlApp1}    chrome    options=${chrome_options}
+    Maximize Browser Window
+Open Login Page Using Chrome Browser mobile Stage
+     #   Open Browser  ${UrlApp}    ${BROWSER}
+   ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    --disable-notifications
+    Call Method    ${chrome_options}    add_argument    --disable-cache
+    Open Browser    ${UrlApp1}    chrome    options=${chrome_options}
+
+  #  ...   options=add_argument("--disable-notifications")
+  #  Maximize Browser Window
+    Set Window Size         720        1280
 Open Login Page Using Chrome Browser mobile
  #   Open Browser  ${UrlApp}    ${BROWSER}
    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    --disable-notifications
     Call Method    ${chrome_options}    add_argument    --disable-cache
     Open Browser    https://production.flytoday.ir/    chrome    options=${chrome_options}
+
   #  ...   options=add_argument("--disable-notifications")
   #  Maximize Browser Window
     Set Window Size         720        1280
-
-
-
 Open Login Page Using Chrome Browser app
     Open Browser  ${UrlApp}    ${BROWSER}
     ...   options=add_argument("--disable-notifications")

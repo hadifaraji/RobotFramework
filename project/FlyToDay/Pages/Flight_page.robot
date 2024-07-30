@@ -2,7 +2,9 @@
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
 
-*** Variables *** 
+*** Variables ***
+
+
 ${Flight-Domestic_Part}     css:[data-test='service-tab-domestic-flight'] > .tabs_text__7p1gI     #Flight-Domestic
 ${One way_ComboBox}         xpath://span[.='یک طرفه']
 ${RoundTrip_ComboBox}       css:[data-test='Return']
@@ -87,11 +89,11 @@ Search Flight Domestic
       Click Element  ${Search_Button}
       Click Element   deny
       Sleep  25
-Select Tickect
-      Wait Until Element Is Visible   ${Details and purchase_Button} 
-      Click Element  ${Details and purchase_Button}
-      Wait Until Element Is Visible   ${Buy tickets_Button} 
-      Click Element  ${Buy tickets_Button} 
+#Select Tickect 
+ #     Wait Until Element Is Visible   ${Details and purchase_Button} 
+  #    Click Element  ${Details and purchase_Button}
+   #   Wait Until Element Is Visible   ${Buy tickets_Button} 
+    #  Click Element  ${Buy tickets_Button} 
 Passenger information irani
           [Arguments]      ${First name}    ${Last name}   ${nationalId}
       Wait Until Element Is Visible   ${passengerFirstName_Field} 

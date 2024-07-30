@@ -8,7 +8,7 @@ Resource          ../Steps/Flight_Step.robot
 Resource          ../Setup/resources.robot
 Library    BuiltIn
 
-Suite Setup       Open Login Page Using Chrome Browser mobile
+Suite Setup       Open Login Page Using Chrome Browser Stage
 Test Teardown     Close Chrome Browser
 *** Variables ***
 ${Username}      09127988405  

@@ -2,12 +2,12 @@
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
 Library        ../pages/python_resource.py
-*** Variables *** 
-
+Library    XML
+*** Variables ***
 #--------------------------------
 ${Details and purchase_Button}            css:#general-itineraries-container .itinerary_ticketChooseSection__0StDZ [data-test='show-flight-more-detail-0']
 ${Buy tickets_Button}                     css:.flight-details_chooseTicketButton__PAFU8
-#-------passenger---------
+#-------passenger ---------
 ${passengerFirstName_Field}            passengerFirstName
 ${passengerLastName_Field}             passengerLastName
 ${nationalId_Field}                    nationalId
@@ -21,7 +21,7 @@ ${dateOfBirthYearMobile-form}          css:.css-xsonp6-control
 
 
 ${dateOfBirthDay-form}                 css:.css-6gq4gv-control .css-1hoxxid
-${dateOfBirthDay2-form}                react-select-2-option-1
+${dateOfBirthDay2-form}                react-select-2-option-2
 ${dateOfBirthMonth-form}               css:.css-1xhcotz-control .css-1hoxxid
 ${dateOfBirthMonth2-form}              react-select-3-option-0
 ${dateOfBirthYear-form}                css:.css-xsonp6-control .css-1xc3v61-indicatorContainer
@@ -36,7 +36,7 @@ ${Continue the purchase process_Bottun}   css:[type='primary']
 ${PassengersNotebook_Button}             //button[@class='px-2 px-md-3 tw-my-0 passenger-information-panel_passengersBooklet__QPrXJ button_secondaryBtn__Bygek']
 ${User Passengers' notebook_Button}       css:.add-passenger_btn__ltrGt
 ${User Passengers' notebookMobile_Button}       css:.add-passenger_mobileRow__tEv57
-#-------------------------------------------------
+#---------------------------- datefPassport ---------------------
 ${passport_Field}             passportNumber
 ${dateOfPassport-form}           css:.tw-text-gray-400
 ${dateOfPassport-form}                    dateOfBirth
@@ -64,16 +64,24 @@ ${Passport Country_Combobox}        //span[@class="tw-ms-1 form-country-select_c
 ${Passport Country_SearchCombobox}        css:[placeholder='نام کشور']
 ${Passport Country_SelectCombobox}         //div[@class="form-country-select_country__VGBO_ false pointer"]
 
-#--------------------------passenger book page----------------------------
-${delete_icon}    //div[@class='dashboard-common_list__6DfYC fw-500']/div[1]//button[@class='icon-trash-fill tw-ms-4 dashboard-common_actionButton__XYa1z dashboard-common_deleteButton__uCvLk button_defaultBtn__E53oA']
-${add_passenger_button}  //button[@class='fs-7 button_secondaryBtn__Bygek']
-${gender_icon}  //div[@class='popper_popper__uxti2 select-field_popper__7KB0A']/div[.='مرد']
-${National_Code_box}  //input[@class='field_value__EXUsj field_withLabel__j0VNx text-field_input__e40ih fs-6 ltr-input']
-${Information registration icon}  //button[@class='w-100 button_primaryBtn__dJOjt']
-${ Edit_icon}  //div[@class='dashboard-common_list__6DfYC fw-500']/div[1]//button[@class='icon-edittwo-fill tw-ms-4 dashboard-common_actionButton__XYa1z button_defaultBtn__E53oA']
-
-
-
+#----------------------------Passnger visa-------
+${passengerFirstNameVisa_Field}      passengerFirstName-Adt-0
+${passengerLastNameVisa_Field}       passengerLastName-Adt-0 
+${passengerNationalIdVisa_Field}              nationalCode-Adt-0
+${MobileVisa_Field}                  mobile-Adt-0
+#----------------------------     cip      ----------------------------
+${name_span}  //span[.='نام لاتین']
+${cip_name_input}  Adt.0.firstName 
+${cip_family_input}  Adt.0.lastName
+${cip_nationalId_input}  Adt.0.nationalId
+${airline_box}  //span[@class='field_label__TwY5y field_label__9Do0O']
+${cip_Continue_the_purchase_process}  css:.tw-h-12
+${Approval of regulations}  xpath=(//div[@class="checkbox-with-logo_styledCheckbox__ZHJ5Y checkbox-with-logo_styledUnCheckboxChecked__OzoWX "])[3]
+${confirm and pay}  css:.tw-h-12
+${first_airline}  (//div[@class="option_autocompleteOption__vJ6SE option_noCaptionOption__1nnA7"])[1]
+${Flight number and destination airport}   //button[@name='flightNumberAndAirport']/div[@class='field_labelValueWrapper__Xvf3_']
+${First_Flight_number}  (//div[@class="option_selectOption__T1yUy"])[1]
+${XPATH_SELECTOR}  //svg[@class="checkbox-with-logo_icon__ZwD1n"]
 
 *** Keywords ***
 Wait Until Element Is Clickable
@@ -173,14 +181,14 @@ information of Iranian passengers
       Input Text       ${passengerFirstName_Field}      ${First name} 
       Input Text       ${passengerLastName_Field}      ${Last name}
       Input Text       ${nationalId_Field}      ${nationalId}
-      Click Element    ${dateOfBirth-form}
+      Click Element    dateOfBirth
      ${element_d_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthDay-form}   timeout=20s
     Run Keyword If    ${element_d_found}
     ...    Click Element    ${dateOfBirthDay-form}
     ...    ELSE
     ...    Click Element     ${dateOfBirthDayMobile-form}
-      Wait Until Element Is Visible   ${dateOfBirthDay2-form}
-      Click Element    ${dateOfBirthDay2-form}
+      Wait Until Element Is Visible   ${dateOfBirthDay2-form}  timeout=2
+      Click Element    ${dateOfBirthDay2-form} 
      ${element_d1_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthMonth-form}   timeout=20s
     Run Keyword If    ${element_d1_found}
     ...    Click Element    ${dateOfBirthMonth-form}
@@ -368,49 +376,152 @@ add Baby
       Wait Until Element Is Visible   ${User Passengers' notebook_Button}    timeout=20
       Click Element    ${User Passengers' notebook_Button}
 
-######## passenfers book page ########
 
-Entry of minimum passenger information
-    Wait Until Element Is Visible    ${add_passenger_button}
-    Click Element    ${add_passenger_button}
-    Input Text    nameFa    رضا
-    Input Text    lastNameFa    نصیری
-    Click Element    gender
-    Wait Until Element Is Visible    ${gender_icon}
-    Click Element    ${gender_icon}
-  ${National_Code}  National Code Generator
-    Input Text   ${National_Code_box}    ${National_Code}
-    Click Element    ${Information registration icon}
-    Sleep    5
+Add passenger visa
+          [Arguments]      ${First name}    ${Last name}   ${NationalId}  ${Mobile}
+      Wait Until Element Is Visible   ${passengerFirstNameVisa_Field}    timeout=25
+      Click Element    ${passengerFirstNameVisa_Field}
+      Input Text       ${passengerFirstNameVisa_Field}     ${First name}
+      Input Text       ${passengerLastNameVisa_Field}      ${Last name}
+      Input Text       ${passengerNationalIdVisa_Field}     ${NationalId}
+      Input Text       ${MobileVisa_Field}                 ${Mobile}
+      Click Element    //span[.='تاریخ تولد']
+     ${element_d_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthDay-form}   timeout=20s
+    Run Keyword If    ${element_d_found}
+    ...    Click Element    ${dateOfBirthDay-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthDayMobile-form}
+      Wait Until Element Is Visible   ${dateOfBirthDay2-form}
+      Click Element    ${dateOfBirthDay2-form}
+     ${element_d1_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthMonth-form}   timeout=20s
+    Run Keyword If    ${element_d1_found}
+    ...    Click Element    ${dateOfBirthMonth-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthMonthMobile-form}
+      Wait Until Element Is Visible   ${dateOfBirthMonth2-form}
+      Click Element    ${dateOfBirthMonth2-form}
 
-delete passenger
-    Wait Until Element Is Visible    ${delete_icon}
-    Click Element    ${delete_icon}
-    Wait Until Element Is Visible    css:.tw-me-1
-    Click Element    css:.tw-me-1
-    Sleep    5
+           ${element_d2_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthYear-form}   timeout=20s
+    Run Keyword If    ${element_d2_found}
+    ...    Click Element    ${dateOfBirthYear-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthYearMobile-form}
+      Wait Until Element Is Visible   ${dateOfBirthYear2-form}
+      Click Element    ${dateOfBirthYear2-form}
+      Click Element    ${dateOfBirthSubmit_Button}
+        Sleep   1
+      Click Element    //span[.='تاریخ انقضا پاسپورت']
+      Wait Until Element Is Visible   ${dateOfPassportDay-form}
+      Click Element    ${dateOfPassportDay-form}
+      Wait Until Page Contains Element    ${dateOfPassportDay2-form}
+      Click Element    ${dateOfPassportDay2-form}
+      Wait Until Element Is Visible   ${dateOfPassportMonth-form}
+      Click Element    ${dateOfPassportMonth-form}
+      Wait Until Page Contains Element     ${dateOfPassportMonth2-form}
+      Click Element    ${dateOfPassportMonth2-form}
+
+      Wait Until Element Is Visible   ${dateOfPassportYear-form}
+      Click Element    ${dateOfPassportYear-form}
+      Click Element    ${dateOfPassportYear2-form}
+      Click Element    ${dateOfPassportSubmit_Button}
+      Sleep    2
+      Click Element    //span[.='تاریخ رفت']
+      Sleep    1
 
 
-delete all passenfers
+
+        ${element_d1_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthDay-form}   timeout=20s
+    Run Keyword If    ${element_d_found}
+    ...    Click Element    ${dateOfBirthDay-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthDayMobile-form}
+    Wait Until Element Is Visible    css:[tabindex='3']
+    Select From List By Label        css:[tabindex='3']            5
+     ${element_d1_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthMonth-form}   timeout=20s
+    Run Keyword If    ${element_d1_found}
+    ...    Click Element    ${dateOfBirthMonth-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthMonthMobile-form}
+    #  Wait Until Element Is Visible   id:react-select-3-option-3
+     # Click Element   id:react-select-3-option-3
+            Sleep    1
+
+         Execute JavaScript    document.querySelector("div.css-1wy0on6 > div:nth-child(2)").click()
+
+           ${element_d1_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthYear-form}   timeout=20s
+    Run Keyword If    ${element_d2_found}
+    ...    Click Element    ${dateOfBirthYear-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthYearMobile-form}
+           Sleep    1
+
+    #    Execute JavaScript    document.querySelector("div.css-1wy0on6 > div:nth-child(2)").click()
+
+    #  Wait Until Element Is Visible  id:react-select-4-option-2
+     # Click Element    id:react-select-4-option-2
+      Click Element    ${dateOfBirthSubmit_Button}
+      Sleep   5
+
+enter information of Cip book
+    Execute Javascript    document.querySelector("input.field_value__EXUsj.field_withLabel__j0VNx.text-field_input__e40ih").scrollIntoView()
+    Sleep    10
+    Click Element    //span[.='نام لاتین']
+    Wait Until Element Is Visible    ${cip_name_input}      timeout=10
+    Input Text    ${cip_name_input}    REZA
+    Input Text    ${cip_family_input}    VFVF
+    Input Text    ${cip_nationalId_input}    0020901984
     Sleep    3
-    ${isVisible}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${delete_icon}    timeout=10s
+    Click Element    //span[.='تاریخ تولد']
+     ${element_d_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthDay-form}   timeout=20s
+    Run Keyword If    ${element_d_found}
+    ...    Click Element    ${dateOfBirthDay-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthDayMobile-form}
+      Wait Until Element Is Visible   ${dateOfBirthDay2-form}
+      Click Element    ${dateOfBirthDay2-form}
+     ${element_d1_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthMonth-form}   timeout=20s
+    Run Keyword If    ${element_d1_found}
+    ...    Click Element    ${dateOfBirthMonth-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthMonthMobile-form}
+      Wait Until Element Is Visible   ${dateOfBirthMonth2-form}
+      Click Element    ${dateOfBirthMonth2-form}
 
-    WHILE    ${isVisible} == True
-        delete passenger
-        ${isVisible}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${delete_icon}    timeout=10s
-    END
-  
-Edit passenger information
-    Wait Until Element Is Visible    ${ Edit_icon}
-    Click Element    ${ Edit_icon}
-    Click Element    nameFa
-    Clear Element Text    nameFa
-    Press Keys    nameFa    علی
+           ${element_d2_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${dateOfBirthYear-form}   timeout=20s
+    Run Keyword If    ${element_d2_found}
+    ...    Click Element    ${dateOfBirthYear-form}
+    ...    ELSE
+    ...    Click Element     ${dateOfBirthYearMobile-form}
+      Wait Until Element Is Visible   ${dateOfBirthYear2-form}
+      Click Element    ${dateOfBirthYear2-form}
+      Click Element    ${dateOfBirthSubmit_Button}
+     Click Element     //div[@class='select-field_selectField__H30Vw flex-1 tw-w-full']//div[@class='field_labelValueWrapper__Xvf3_']
+     Wait Until Element Is Visible    //div[.='مرد']
+      Click Element        //div[.='مرد']
 
-    Click Element    lastNameFa
-    Clear Element Text    lastNameFa
-    Press Keys    lastNameFa    جعفری
-    Click Element    gender
-    Wait Until Element Is Visible    ${gender_icon}
-    Click Element    ${gender_icon}
-    Click Element    ${Information registration icon}
+
+
+
+    Execute Javascript    var element = document.evaluate("${airline_box}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; element.scrollIntoView()
+    Click Element    ${airline_box}
+    Wait Until Element Is Visible       ${first_airline}
+    Click Element        ${first_airline}
+    Wait Until Element Is Visible    ${Flight number and destination airport}
+    Click Element    ${Flight number and destination airport}
+    Wait Until Element Is Visible    ${First_Flight_number}
+    Click Element    ${First_Flight_number}
+    Wait Until Element Is Visible    ${cip_Continue_the_purchase_process}
+    Click Element    ${cip_Continue_the_purchase_process}
+    Sleep    3
+
+    Execute JavaScript  window.scrollTo(0, document.body.scrollHeight);
+    Sleep     2
+    Wait Until Element Is Visible   ${confirm and pay}
+    Click Element    ${confirm and pay}
+
+    Wait Until Element Is Visible  css:.d-flex.tw-select-none .checkbox-with-logo_icon__ZwD1n  20s
+    Execute JavaScript  document.querySelector('.d-flex.tw-select-none .checkbox-with-logo_icon__ZwD1n').classList.remove('hide');
+    Click Element    css:.d-flex.tw-select-none .checkbox-with-logo_icon__ZwD1n
+
+
+

@@ -6,6 +6,6 @@ Library     SeleniumLibrary
 
 
 *** Variables ***
-${}
+
 
 *** Test Cases ***

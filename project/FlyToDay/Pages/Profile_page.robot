@@ -2,7 +2,9 @@
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
 
-*** Variables *** 
+
+
+*** Variables ***
 ${IconProfile_Btn}    css:.icon-profile-fill
 ${profile_Menu}       css:[data-test='profile']
 ${My passengers_Button}       //span[.='مسافران من']

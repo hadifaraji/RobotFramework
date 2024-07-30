@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
-
-*** Variables *** 
+*** Variables ***
 ${Login_Btn}         xpath://span[.='ورود']
 ${Username_Field}    emailOrMobile
 ${Next_Button}       css:.authentication_btnAuth__WVPok
@@ -23,5 +22,5 @@ Input Password
 Submit Credentials
       Click Element   ${Submit_Button}
       Sleep    3
-      
+
 

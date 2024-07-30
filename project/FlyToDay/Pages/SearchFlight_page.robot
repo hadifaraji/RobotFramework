@@ -2,7 +2,9 @@
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
 
-*** Variables *** 
+
+
+*** Variables ***
 ${Flight-Domestic_Part}     css:[data-test='service-tab-domestic-flight'] > .tabs_text__7p1gI     #Flight-Domestic
 ${One way_ComboBox}         xpath://span[.='یک طرفه']
 ${RoundTrip_ComboBox}       css:[data-test='Return']
@@ -11,7 +13,7 @@ ${Select end date}          css:[data-test='calendarDay-0-29'] .day_dayNumber__J
 ${Confirmed end date}          css:.new_contained__osHEL 
 ${cabinType_ComboBox}       xpath://span[.='اکونومی']
 
-${From_Button}              css:.autocomplete_autocomplete__WQES9:nth-child(2) .field_labelValueWrapper__Xvf3_
+${From_Button}              //span[.='مبدا']
 ${FromSearch_Filed}       css:[placeholder='جستجوی مبدا']
 ${FromSelect_Button}        css:*[data-test=\"thr\"]
 ${To_Button}                css:.autocomplete_autocomplete__WQES9:nth-child(3) .field_labelValueWrapper__Xvf3_
@@ -19,12 +21,10 @@ ${ToSelect_Button}          css:*[data-test=\"mhd\"]
 ${ToSearch_Filed}       css:[placeholder='جستجوی مقصد']
 ${ToSelect_Button}       css:[data-test='ist']
 
-${Search_Button}            css:.search-button
-
-
+${Search_Button}           //*[contains(text(), 'جستجو')]
 #--------------------------------
 ${Details and purchase mobile_Button}     //div[@class="route-airline-name_airlineWrapper__57KK0 mt-md-2"]
-${Details and purchase_Button}            css:[data-test='show-flight-more-detail-0']
+${Details and purchase_Button}            css:#general-itineraries-container > div > div:nth-of-type(1) .itinerary_chooseTicketButton__OQlPT
 ${Buy tickets_Button}                     css:.flight-details_chooseTicketButton__PAFU8
 #--------------------------Click part international flight-------------------
 
@@ -100,8 +100,11 @@ Search domestic flight
     ${element_d_found}    Run Keyword And Return Status    Wait Until Element Is Visible    xpath://span[.='پرواز']    timeout=5s
     Run Keyword If    ${element_d_found}
     ...    Click Element    xpath://span[.='پرواز']
-   # ...    ELSE
-      Wait Until Element Is Visible        ${From_Button}   timeout=10
+    ...    ELSE
+    #...    Wait Until Element Is Visible        ${From_Button}   timeout=40
+    ...    Log    "Windows"
+      Wait Until Element Is Visible    ${From_Button}         timeout=10
+
       Click Element    ${From_Button}
       Wait Until Element Is Visible    ${FromSearch_Filed}         timeout=10
       Click Element  ${FromSearch_Filed}
@@ -118,7 +121,7 @@ Search domestic flight
       Wait Until Element Is Visible   //p[.='همه فرودگاه‌های ${ToCity} (${ToCode_City})']      timeout=20
       Click Element  //p[.='همه فرودگاه‌های ${ToCity} (${ToCode_City})']
 Select Tickect
-     ${element_d_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${Details and purchase_Button}   timeout=20s
+     ${element_d_found}    Run Keyword And Return Status    Wait Until Element Is Visible    ${Details and purchase_Button}   timeout=50s
      Run Keyword If    ${element_d_found}
      ...    Click Element    ${Details and purchase_Button}
      ...   ELSE
@@ -148,7 +151,8 @@ Search Flight Internaitional
       Wait Until Element Is Visible   //p[.='همه فرودگاه‌های استانبول (IST)']      timeout=20
       Click Element  //p[.='همه فرودگاه‌های استانبول (IST)']
 Finalize the search
-      Click Element  ${Search_Button}
+      Click Element      //button[contains(text(), 'جستجو')]
+
 
 Add a child passenger list
       Wait Until Element Is Visible    ${Number of passengers_menu}

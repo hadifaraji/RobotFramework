@@ -2,12 +2,12 @@
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
 
-*** Variables *** 
+
+*** Variables ***
 ${trainOriginStation_Combobox}       css:[data-test='trainOriginStation'] > .field_labelValueWrapper__Xvf3_
 ${trainOriginStation_ComboboxSearch}       css:[placeholder='جستجوی مبدا']
 ${trainDestinationStation_Combobox}  css:[data-test='trainDestinationStation'] > .field_labelValueWrapper__Xvf3_
 ${trainDestinationStation}       css:[placeholder='جستجوی مقصد']
-
 ${Search_Button}     css:.search-button
 ${Details and purchase_Button}        //button[@class="d-none d-md-block w-100 tw-mt-2 tw-mb-1 itinerary_chooseButton__x1Dbs button_primaryBtn__dJOjt"]
 ${Buy tickets_Button}                 css:.itinerary_chooseTicketButton__RoXTC

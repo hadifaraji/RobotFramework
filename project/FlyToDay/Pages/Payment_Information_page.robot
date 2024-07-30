@@ -36,8 +36,8 @@ ${descripsion_Field}            //textarea[@class="field_value__EXUsj field_with
 
 ${confirm and pay_Button}       //button[@class="tw-w-full xs:tw-max-w-[300px] tw-h-12 tw-ms-auto button_primaryBtn__dJOjt"]
 ${Hotel rules and regulations}   //div[@class='fs-7 tw-mr-1 pointer']
-
-
+#----------------------------Wallet------------------------------------------
+${Wallet_Button}                //span[@class='switch-btn_spanCheckBox__NNQ0a']
 *** Keywords ***
 Wait Until Element Is Clickable
     [Arguments]    ${locator}
@@ -55,13 +55,12 @@ Approval of rules and regulations
       Click Element      ${Terms and Conditions_Link}
      # Click button       ${Terms and Conditions_Button}
 confirm and pay
-          Sleep  2
-
-     Scroll Element Into View        ${Paying for the ticket_Button}
-      Wait Until Keyword Succeeds    10s    1s    Element Should Be Clickable    ${Paying for the ticket_Button}
+       Sleep  2
+       Scroll Element Into View        ${Paying for the ticket_Button}
+       Wait Until Keyword Succeeds    10s    1s    Element Should Be Clickable    ${Paying for the ticket_Button}
   #    Wait Until Element Is Visible   ${Paying for the ticket_Button}   timeout=10
-      Click Element    ${Continue the purchase process_Bottun}
-      Sleep  5
+       Click Element    ${Continue the purchase process_Bottun}
+       Sleep  5
 Paying for the ticket 
     Sleep  5
     Wait Until Element Is Visible   ${Paying for the ticket_Button} 
@@ -84,8 +83,6 @@ Enter the travel card code
       Wait Until Element Is Visible   ${Travel card_TextArea} 
       Input Text       ${Travel card_TextArea}       ${Travel card code}
       Click Element    ${Travel cardmin_Button}
- 
-
 Enter the discount code
           [Arguments]      ${discount code}    
       Wait Until Element Is Visible   ${discount code_Menu}
@@ -104,11 +101,10 @@ Confirm and pay Hotel
     Scroll Element Into View       ${confirm and pay_Button}
     Wait Until Element Is Visible   ${confirm and pay_Button}
     Click Element                  ${confirm and pay_Button}
-
 Write a description for the hotel reservation
         [Arguments]       ${description}
     Scroll Element Into View       ${descripsion_Field}
-     Wait Until Element Is Visible   ${descripsion_Field}
+    Wait Until Element Is Visible   ${descripsion_Field}
     Input Text    ${descripsion_Field}      ${description}
 Confirm the hotel reservation rules and regulations
     Scroll Element Into View       ${confirm and pay_Button}
@@ -116,3 +112,6 @@ Confirm the hotel reservation rules and regulations
     Click Element                  ${confirm and pay_Button}
     Wait Until Element Is Visible   ${Hotel rules and regulations}
     Click Element    ${Hotel rules and regulations}
+Pay with wallet
+    Wait Until Element Is Visible   ${Wallet_Button}
+    Click Element                   ${Wallet_Button}

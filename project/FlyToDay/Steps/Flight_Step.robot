@@ -4,6 +4,8 @@ Resource          ../pages/Home_page.robot
 Resource          ../pages/Passenger_information.robot
 Resource          ../pages/Payment_Information_page.robot
 Resource          ../pages/SearchFlight_page.robot
+Resource          ../pages/Orderprocessreport_page.robot
+
 *** Keywords ***
 Handle Stale Element
     [Arguments]    ${locator}
@@ -64,6 +66,12 @@ Select Flight Internaitional RoundTrip
       Search Flight Internaitional
       Finalize the search
       Select Tickect
+Select Flight International MultiWay
+      Change Flight Trip Type MultiWay
+      Search Flight Internaitional MultiWay
+      Select End-date For MultiWay Flight
+      Finalize the search
+      Select Multiway Ticket
 Search domestic flight ticketsRoundTrip
       [Arguments]      ${FromCity}  ${FromCode_City}  ${ToCity}   ${ToCode_City}
       Change Flight Trip Type RoundTrip
@@ -126,9 +134,9 @@ Enter the information of the foreign passenger and select normal cancellation
       Select Normal cancellation
       Continue the purchase process
 Enter information of Iranian passengers And Return without penalty cancellation
-      [Arguments]           ${First name}    ${Last name}   ${nationalId}
+      [Arguments]           ${First name}    ${Last name}   ${nationalId}      ${PassportId}
       Continue the purchase process
-      information of Iranian passengers    ${First name}    ${Last name}   ${nationalId}
+      Information Of Iranian Passengers With Passport      ${First name}    ${Last name}   ${nationalId}  ${PassportId}
       Select Return without penalty cancellation
       Continue the purchase process
 
@@ -144,6 +152,12 @@ Select Passengers notebook of Iranian And Select Normal cancellation
 Click Passengers notebook
       Click Passengers notebook-Guest User      
 #....................................
+Approval of rules And pay With Wallet
+      confirm and pay
+      Pay With Wallet
+      Approval of rules and regulations
+      confirm and pay
+
 Approval of rules And pay
       confirm and pay
       Approval of rules and regulations
@@ -175,4 +189,11 @@ Approval of rules And pay And Enter the discount code & travel card code
       Enter the travel card code    ${travel card code} 
       Should Be True    ${message}
 
+Receive the purchased ticket
+     # [Arguments]    ${initial_status}
+    #   Checking the status of ticket issuance
+   #    Check Status Change      ${initial_status}
+       Check Status Change
+Return the purchased ticket
 
+        Check Status Change1

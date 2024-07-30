@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Simple example using SeleniumLibrary.
+Documentation     خرید انواع تور
 Library           SeleniumLibrary
 Library    Telnet
 Resource          ../Steps/Login_Step.robot
@@ -7,25 +7,26 @@ Resource          ../Setup/resources.robot
 Resource          ../pages/Tour_page.robot
 
 
-test Setup       Open Login Page Using Chrome Browser app
+
+#test Setup       Open Login Page Using Chrome Browser Satge
+
+Suite Setup       Open Login Page Using Chrome Browser Stage
+
 Test Teardown     Close Chrome Browser
 *** Variables ***
-${Username}      09127988405  
-${password1}        123456Aa
+${Username}      09382121662  
+${password1}        Aa123456
+${Tour_name}   css:[alt='تور آنتالیا']
+${MOBILE_WIDTH}    375
+${MOBILE_HEIGHT}   667
 
-${Tour}    تور دبی
+
 *** Test Cases ***
-Dubai tour reservation request
+#### با تغییر نام ارگومان سایر تورها را نیز میشه بررسی کرد
+tour reservation request
+     Given Login User   ${Username}  ${password1}
+     when select tour  ${Tour_name}
+     When Enter Passnger info
+     Then Finalization of the tour inquiry by the agency
 
-     Given Login User   ${Username}  ${password1}
-     when select tour
-     When Select Dubai Tour  ${Tour}
-     When Enter Passnger info
-     Then Finalization of the tour inquiry by the agency
-istanbul tour reservation request
-     Given Login User   ${Username}  ${password1}
-     when select tour
-     When Select stanbul Tour
-     When Enter Passnger info
-     Then Finalization of the tour inquiry by the agency
 
